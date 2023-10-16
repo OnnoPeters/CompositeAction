@@ -23,6 +23,8 @@ runs:
         sed -i '1s/^/-c Constraints.txt\n/' requirements.txt
         pip install -r requirements.txt
         sed -i '1d' requirements.txt
+      shell: bash
 
     - name: Run Python Script
       run: ${{ inputs.run }}
+      shell: bash
