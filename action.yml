@@ -30,5 +30,5 @@ runs:
       shell: bash
 
     - name: Run Python Script
-      run: ${{ inputs.run }}
+      run: python ${{ inputs.run }}
       shell: bash
