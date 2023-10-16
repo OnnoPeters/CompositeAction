@@ -25,6 +25,10 @@ runs:
         sed -i '1d' requirements.txt
       shell: bash
 
+    - name: Configure GitHub path
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+      shell: bash
+
     - name: Run Python Script
       run: ${{ inputs.run }}
       shell: bash
