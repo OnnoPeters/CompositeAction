@@ -9,7 +9,7 @@ inputs:
   run:
     description: "Python Script Path and Parameters"
     required: true
-    type:string
+    type: string
 runs:
   using: "composite"
   steps:
