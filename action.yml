@@ -1,0 +1,28 @@
+name: "Python Venv Creator"
+description: 'Create Python Virtual Environment with provided version, requirements and constraints'
+inputs:
+  python_version:
+    description: "Python Version"
+    required: true
+    default: "3.10"
+    type: string
+  run:
+    description: "Python Script Path and Parameters"
+    required: true
+    type:string
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: ${{ inputs.python_version }}
+
+    - name: Install requirements with constraints
+      run: |
+        sed -i '1s/^/-c Constraints.txt\n/' requirements.txt
+        pip install -r requirements.txt
+        sed -i '1d' requirements.txt
+
+    - name: Run Python Script
+      run: ${{ inputs.run }}
